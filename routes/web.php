@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth','twoFactor'])->group(function(){
+    Route::get('otp','OTPController@index')->name('otp.index');
+    Route::post('otp','OTPController@verifyPass')->name('otp.verify');
+    // Route::get('dashboard',function(){return view('dashboard');});
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
+Auth::routes(['register'=>false]);
+
