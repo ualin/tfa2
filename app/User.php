@@ -49,7 +49,7 @@ class User extends Authenticatable
     {
         $this->timestamps = false;
         $this->two_factor_pass = random_int(100000,999999);
-        $this->two_factor_expires_at = now()->addSeconds(20);
+        $this->two_factor_expires_at = now()->addSeconds(120);
 
         $this->save();
     }
