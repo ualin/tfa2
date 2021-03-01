@@ -20,8 +20,17 @@
                         <div class="form-group">
                             <input type="text" name="two_factor_pass" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary">{{ __('Verify code') }}</button>.
+                        <button type="submit" class="btn btn-primary">{{ __('Verify code') }}</button>
+                        <button type="submit" form="resend-form" class="btn btn-secondary">{{ __('Resend code') }}</button>
                     </form>
+                    <form id="resend-form" action="{{ route('otp.resend') }}" method="post">@csrf</form>
+                    <div class="text-center">
+                        @error('otp')
+                            <span class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>

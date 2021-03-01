@@ -39,7 +39,17 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <div class="form-group d-flex justify-content-center">
+                            <button type="submit" class="btn btn-secondary">Submit</button>
+                        </div>
+
+                        <div class="text-center">
+                            @error('otp')
+                                <span class="text-danger" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                     </form>
                 </div>
             </div>
