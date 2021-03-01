@@ -50,6 +50,16 @@ class User extends Authenticatable
         $this->timestamps = false;
         $this->two_factor_pass = random_int(100000,999999);
         $this->two_factor_expires_at = now()->addSeconds(120);
+        $this->two_factor_pass_resend_attempt = 0;
+
+        $this->save();
+    }
+
+    public function regenerate_two_factor_data()
+    {
+        $this->timestamps = false;
+        $this->two_factor_pass = random_int(100000,999999);
+        $this->two_factor_pass_resend_attempt += 1;
 
         $this->save();
     }
@@ -59,6 +69,15 @@ class User extends Authenticatable
         $this->timestamps = false;
         $this->two_factor_pass = null;
         $this->two_factor_expires_at = null;
+        $this->two_factor_pass_resend_attempt = 0;
+
+        $this->save();
+    }
+
+    public function increase_two_factor_pass_resend_attempt()
+    {
+        $this->timestamps = false;
+        $this->two_factor_pass_resend_attempt += 1;
 
         $this->save();
     }

@@ -26,6 +26,7 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => Hash::make('secret'), // password
         'remember_token' => Str::random(10),
         'username' => $faker->userName,
-        'prefer_sms' => 0
+        'prefer_sms' => 0,
+        'two_factor_pass_resend_attempt' => 0,
     ];
 });

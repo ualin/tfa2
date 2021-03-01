@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth','twoFactor'])->group(function(){
     Route::get('otp','OTPController@index')->name('otp.index');
-    Route::post('otp','OTPController@verifyPass')->name('otp.verify');
+    Route::post('otp/verify','OTPController@verifyPass')->name('otp.verify');
+    Route::post('otp/resend','OTPController@resendPass')->name('otp.resend');
     // Route::get('dashboard',function(){return view('dashboard');});
     Route::get('/home', 'HomeController@index')->name('home');
 });
